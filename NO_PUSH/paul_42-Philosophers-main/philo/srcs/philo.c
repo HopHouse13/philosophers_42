@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:25:01 by phautena          #+#    #+#             */
-/*   Updated: 2024/10/29 14:29:49 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:27:40 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 static void	ft_free(t_data *data)
 {

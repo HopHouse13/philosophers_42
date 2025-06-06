@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sync_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 13:28:09 by phautena          #+#    #+#             */
-/*   Updated: 2024/10/29 15:05:19 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:28:00 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 bool	get_bool(t_mtx *mutex, bool *value)
 {

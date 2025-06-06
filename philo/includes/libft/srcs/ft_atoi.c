@@ -6,7 +6,7 @@
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:26:50 by pbret             #+#    #+#             */
-/*   Updated: 2025/05/09 18:43:14 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/06 15:48:26 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 // 3] conversion en entier -> *10 pour decaler les unites
 //    + convertion du carac en valeur (- 48) == (- '0') valeur ASCII
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	resultat;
+	long long	i;
+	long long	sign;
+	long long	resultat;
 
 	i = 0;
 	sign = 1;

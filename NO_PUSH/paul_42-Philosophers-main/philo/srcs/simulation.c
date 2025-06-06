@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phautena <phautena@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:26:27 by phautena          #+#    #+#             */
-/*   Updated: 2024/11/09 15:30:14 by phautena         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:27:57 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 static bool	check_all_ate(t_data *data)
 {

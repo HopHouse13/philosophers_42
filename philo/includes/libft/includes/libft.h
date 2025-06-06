@@ -6,7 +6,7 @@
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 12:01:11 by pbret             #+#    #+#             */
-/*   Updated: 2025/05/26 19:22:50 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/06 16:07:27 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int			ft_strlen(const char *s);
+long long	ft_atoi(const char *str);
 
+int			ft_strlen(const char *s);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -37,7 +38,6 @@ int			ft_toupper(int c);
 int			ft_tolower(int c);
 int			ft_strncmp(const char *str1, const char *str2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
-int			ft_atoi(const char *str);
 int			ft_lstsize(t_list *lst);
 int			ft_strcmp(const char *str1, const char *str2);
 
