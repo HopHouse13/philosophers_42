@@ -6,7 +6,7 @@
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 17:59:44 by pbret             #+#    #+#             */
-/*   Updated: 2025/06/06 16:09:39 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/10 19:32:19 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	ft_limit_int_max(char **argv)
 	return (true);
 }
 
-bool	ft_only_char(char **argv)
+bool	ft_only_digits(char **argv)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ bool	ft_only_char(char **argv)
 		j = -1;
 		while (argv[i][++j])
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (argv[i][j] < '0' || argv[i][j] > '9') // isdigit
 				return (false);
 		}
 	}
@@ -46,10 +46,10 @@ bool	ft_only_char(char **argv)
 bool	ft_parsing(int argc, char **argv)
 {
 	if (argc != 5 && argc != 6)
-		return (false);
-	if (!ft_only_char(argv))
-		return (false);
+		return (printf(RED"nombre d'argument invalide\n"RESET));
+	if (!ft_only_digits(argv))
+		return (printf(RED"caractere invalide\n"RESET));
 	if (!ft_limit_int_max(argv))
-		return (false);
-	return (true);
+		return (printf(RED"limite de valeur depassee\n"RESET));
+	return (false);
 }

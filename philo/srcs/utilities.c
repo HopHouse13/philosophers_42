@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/02 17:53:30 by pbret             #+#    #+#             */
-/*   Updated: 2025/05/26 19:26:10 by pab              ###   ########.fr       */
+/*   Created: 2025/06/10 15:57:07 by pab               #+#    #+#             */
+/*   Updated: 2025/06/10 16:56:56 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../includes/philo.h"
 
-void	ft_strncpy(char *str1, char *str2, int nb)
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
+int	ft_atoi(const char *str)
 {
 	int	i;
+	int	resultat;
 
 	i = 0;
-	while (i < nb && str2[i])
-	{
-		str1[i] = str2[i];
+	resultat = 0;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == 32) // isspace
 		i++;
-	}
-	str1[i] = '\0';
-	return ;
+	while (str[i] >= 48 && str[i] <= 57) // isdigit
+		resultat = resultat * 10 + (str[i++] - 48);
+	return (resultat);
 }

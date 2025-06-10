@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
+/*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 11:51:44 by pbret             #+#    #+#             */
-/*   Updated: 2025/01/16 12:21:31 by pbret            ###   ########.fr       */
+/*   Created: 2025/06/10 16:32:49 by pab               #+#    #+#             */
+/*   Updated: 2025/06/10 16:41:46 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+ #include "../includes/philo.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+bool	ft_init_all(t_data *data, char **argv)
 {
-	if (f == 0)
-		return ;
-	while (lst)
-	{
-		f(lst -> content);
-		lst = lst -> next;
-	}
+	
+	
+	return (true);
 }
