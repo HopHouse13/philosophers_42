@@ -6,7 +6,7 @@
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:10:14 by pab               #+#    #+#             */
-/*   Updated: 2025/06/10 16:31:24 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/13 16:44:31 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@
 int		main(int argc, char **argv);
 
 /// PARSING ///
+bool	ft_max_philo(char **argv);
+bool	ft_sixty_ms(char **argv);
 bool	ft_limit_int_max(char **argv);
 bool	ft_only_digits(char **argv);
 bool	ft_parsing(int argc, char **argv);
 
 /// INIT_DATA ///
-bool	ft_init_all(t_data *data, char **argv);
+bool	ft_init_mutex(t_data *data);
+bool	ft_init_tab_philo(t_data *data);
+void	ft_init_data(t_data *data, char **argv);
+bool	ft_initialisation(t_data *data, char **argv);
 
 /// SIMULATION ///
 bool	ft_simulation(t_data *data);
@@ -51,6 +56,6 @@ bool	ft_simulation(t_data *data);
 void	ft_free(t_data *data);
 
 /// UTILITIES ///
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 
 #endif

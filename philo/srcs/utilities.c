@@ -6,24 +6,24 @@
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:57:07 by pab               #+#    #+#             */
-/*   Updated: 2025/06/10 16:56:56 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/13 09:45:18 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
-}
+// int	ft_isdigit(int c)
+// {
+// 	if (c >= '0' && c <= '9')
+// 		return (1);
+// 	else
+// 		return (0);
+// }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	resultat;
+	int		i;
+	long	resultat;
 
 	i = 0;
 	resultat = 0;

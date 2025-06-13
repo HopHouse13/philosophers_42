@@ -1,0 +1,55 @@
+### Chapitre III
+### Aperçu
+Voici les points clés que vous devez connaître pour réussir cet exercice :
+- Un ou plusieurs philosophes sont assis autour d'une table ronde.
+- Il y a un grand bol de spaghetti au milieu de la table.
+- Les philosophes alternent entre manger, penser et dormir.
+- Pendant qu'ils mangent, ils ne pensent ni ne dorment ; pendant qu'ils pensent, ils ne mangent ni ne dorment ; et, bien sûr, pendant qu'ils dorment, ils ne mangent ni ne pensent.
+- Il y a aussi des fourchettes sur la table. Il y a autant de fourchettes que de philosophes.
+- Comme manger des spaghettis avec une seule fourchette est peu pratique, un philosophe doit prendre à la fois la fourchette à sa droite et celle à sa gauche avant de manger.
+- Lorsqu'un philosophe a fini de manger, il repose ses fourchettes sur la table et commence à dormir. Une fois réveillé, il recommence à penser. La simulation s'arrête lorsqu'un philosophe meurt de faim.
+- Chaque philosophe doit manger et ne doit jamais mourir de faim.
+- Les philosophes ne communiquent pas entre eux.
+- Les philosophes ne savent pas si un autre philosophe est sur le point de mourir.
+- Il va sans dire que les philosophes doivent éviter de mourir !
+
+### Chapitre IV
+### Règles générales
+Vous devez écrire un programme pour la partie obligatoire et un autre pour la partie bonus (si vous décidez de faire la partie bonus). Les deux doivent se conformer aux règles suivantes :
+- Les variables globales sont interdites !
+- Votre programme doit prendre les arguments suivants :
+  - number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
+  - number_of_philosophers : Le nombre de philosophes et aussi le nombre de fourchettes.
+  - time_to_die (en millisecondes) : Si un philosophe n'a pas commencé à manger dans les time_to_die millisecondes suivant le début de son dernier repas ou le début de la simulation, il meurt.
+  - time_to_eat (en millisecondes) : Le temps qu'il faut à un philosophe pour manger. Pendant ce temps, il devra tenir deux fourchettes.
+  - time_to_sleep (en millisecondes) : Le temps qu'un philosophe passera à dormir.
+  - number_of_times_each_philosopher_must_eat (argument optionnel) : Si tous les philosophes ont mangé au moins number_of_times_each_philosopher_must_eat fois, la simulation s'arrête. Si non spécifié, la simulation s'arrête lorsqu'un philosophe meurt.
+- Chaque philosophe a un numéro allant de 1 à number_of_philosophers.
+- Le philosophe numéro 1 est assis à côté du philosophe numéro number_of_philosophers. Tout autre philosophe, numéroté N, est assis entre le philosophe N-1 et le philosophe N+1.
+
+### À propos des logs de votre programme :
+- Tout changement d'état d'un philosophe doit être formaté comme suit :
+  - timestamp_in_ms X a pris une fourchette
+  - timestamp_in_ms X est en train de manger
+  - timestamp_in_ms X est en train de dormir
+  - timestamp_in_ms X est en train de penser
+  - timestamp_in_ms X est mort
+- Remplacez timestamp_in_ms par l'horodatage actuel en millisecondes et X par le numéro du philosophe.
+- Un message d'état affiché ne doit pas se superposer à un autre message.
+- Un message annonçant la mort d'un philosophe doit être affiché dans les 10 ms suivant sa mort réelle.
+- Encore une fois, les philosophes doivent éviter de mourir !
+- Votre programme ne doit pas avoir de conditions de course de données.
+
+### Chapitre V
+### Partie obligatoire
+Nom du programme : philo
+Fichiers à rendre : Makefile, *.h, *.c, dans le répertoire philo/
+Makefile : NAME, all, clean, fclean, re
+Arguments : number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
+Fonctions externes autorisées : memset, printf, malloc, free, write, usleep, gettimeofday, pthread_create, pthread_detach, pthread_join, pthread_mutex_init, pthread_mutex_destroy, pthread_mutex_lock, pthread_mutex_unlock
+Libft autorisée : Non
+Description : Philosophes avec threads et mutex.
+Les règles spécifiques pour la partie obligatoire sont :
+- Chaque philosophe doit être représenté comme un thread séparé.
+- Il y a une fourchette entre chaque paire de philosophes. Par conséquent, s'il y a plusieurs philosophes, chaque philosophe a une fourchette à sa gauche et une fourchette à sa droite. S'il n'y a qu'un seul philosophe, il n'aura accès qu'à une seule fourchette.
+- Pour empêcher les philosophes de dupliquer les fourchettes, vous devez protéger l'état de chaque fourchette avec un mutex.

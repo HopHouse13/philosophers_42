@@ -6,7 +6,7 @@
 #    By: pab <pab@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 17:10:30 by pbret             #+#    #+#              #
-#    Updated: 2025/06/10 19:23:17 by pab              ###   ########.fr        #
+#    Updated: 2025/06/13 15:55:56 by pab              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,13 @@ SRCS_DIR	= srcs
 OBJ_DIR 	= obj_$(NAME)
 SRCS		= srcs/philo.c \
 				srcs/parsing.c \
+				srcs/init.c \
 				srcs/utilities.c
 
 OBJS		= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 CC			= cc
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror -ggdb -I$(SRCS_DIR)
+CFLAGS		= -Wall -Wextra -Werror -pthread -ggdb -I$(SRCS_DIR)
 
 $(OBJ_DIR)/%.o : $(SRCS_DIR)/%.c
 			@mkdir -p $(@D)
