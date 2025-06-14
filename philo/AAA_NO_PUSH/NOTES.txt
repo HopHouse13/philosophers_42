@@ -5,7 +5,7 @@ nb_philo				tt_die				tt_eat				tt_sleep				nb_meal
 
 
 
-Question paul:
+Questions paul:
 
 * Pourquoi le nb de philo et le nb de repas est en INT;
 	tt_die, tt_eat, tt_sleep est en LONG?
@@ -15,3 +15,5 @@ Question paul:
 
 * a quoi serre la variable "must_eat_lock" (mutex) dans data?
 	et a quoi serre "must_eat_n" dans chaque thread?
+
+* Pourquoi mettre ¨static" devant le type sur le prototype de tes fonctions.

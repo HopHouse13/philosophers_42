@@ -6,7 +6,7 @@
 #    By: pab <pab@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 17:10:30 by pbret             #+#    #+#              #
-#    Updated: 2025/06/13 15:55:56 by pab              ###   ########.fr        #
+#    Updated: 2025/06/14 13:49:36 by pab              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS_DIR	= srcs
 OBJ_DIR 	= obj_$(NAME)
 SRCS		= srcs/philo.c \
 				srcs/parsing.c \
-				srcs/init.c \
+				srcs/initialisations.c \
 				srcs/utilities.c
 
 OBJS		= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)

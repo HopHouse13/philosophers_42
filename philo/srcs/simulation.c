@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 17:12:39 by pbret             #+#    #+#             */
-/*   Updated: 2025/06/14 17:30:32 by pab              ###   ########.fr       */
+/*   Created: 2025/06/14 17:29:46 by pab               #+#    #+#             */
+/*   Updated: 2025/06/14 17:40:47 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	main(int argc, char **argv)
+bool	ft_simulation(t_data *data)
 {
-	t_data data;
+	int	i;
 
-	if (ft_parsing(argc, argv))
-		return (1);
-	if (ft_initialisation(&data, argv))
-		return (2);
-	if (!ft_simulation(&data))
-		{printf(RED"SIMULATION_INVALIDE\n"RESET); return (3);}
-	// ft_free(&data);
-	printf(GREEN"FIN_DE_SIMULATION\n"RESET);
-	return (0);
+	i = -1;
+	whil
+	
+	return (true);
 }
