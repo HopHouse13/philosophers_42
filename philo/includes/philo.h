@@ -6,7 +6,7 @@
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:10:14 by pab               #+#    #+#             */
-/*   Updated: 2025/06/14 17:33:13 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/15 19:34:38 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <limits.h>
 # include <pthread.h>
 # include <stdlib.h>            // exit ; getenv ; malloc ;
-// # include <unistd.h>				// get
+# include <unistd.h>				// usleep
 // # include <errno.h>             // liste des erreurs errno.
 // # include <readline/history.h>  // gere l'historique des commandes (non vide)
 // # include <readline/readline.h> // declare la fonction readline.
@@ -49,6 +49,12 @@ bool	ft_init_mutex(t_data *data);
 bool	ft_init_tabs(t_data *data);
 void	ft_init_data(t_data *data, char **argv);
 bool	ft_initialisation(t_data *data, char **argv);
+
+/// SYNC_VALUES ///
+void	ft_set_bool(pthread_mutex_t	*lock, bool	*value, bool update);
+bool	ft_get_bool(pthread_mutex_t *lock, bool *value);
+void	ft_set_long(pthread_mutex_t	*lock, long	*value, long update);
+long	ft_get_long(pthread_mutex_t *lock, long *value);
 
 /// SIMULATION ///
 bool	ft_simulation(t_data *data);

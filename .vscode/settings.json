@@ -1,6 +1,6 @@
 {
 	"files.associations": {
-		"philo.h": "c",
-		"structs.h": "c"
+		"structs.h": "c",
+		"philo.h": "c"
 	}
 }

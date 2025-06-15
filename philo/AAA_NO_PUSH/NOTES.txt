@@ -17,3 +17,9 @@ Questions paul:
 	et a quoi serre "must_eat_n" dans chaque thread?
 
 * Pourquoi mettre ¨static" devant le type sur le prototype de tes fonctions.
+
+* J'ai pas compris le comment est fait le lien entre le mutex et la value qui manipule.
+	
+	exemple : start_lock (mutex) et data->start (value)
+
+	je comprends pas comment il fait le lien.

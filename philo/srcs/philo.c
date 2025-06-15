@@ -6,7 +6,7 @@
 /*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 17:12:39 by pbret             #+#    #+#             */
-/*   Updated: 2025/06/14 17:30:32 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/15 19:12:59 by pab              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_initialisation(&data, argv))
 		return (2);
-	if (!ft_simulation(&data))
+	if (ft_simulation(&data))
 		{printf(RED"SIMULATION_INVALIDE\n"RESET); return (3);}
 	// ft_free(&data);
 	printf(GREEN"FIN_DE_SIMULATION\n"RESET);
 	return (0);
-}
+}	
