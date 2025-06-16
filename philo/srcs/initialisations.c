@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:32:49 by pab               #+#    #+#             */
-/*   Updated: 2025/06/16 12:36:17 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/16 18:02:11 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	ft_init_philo(t_data *data)
 		if (data->philos[i].id % 2)
 		{
 			data->philos[i].first_fork = &data->forks[i];
-			data->philos[i].second_fork = &data->forks[i +1 % data->nb_philo];
+			data->philos[i].second_fork = &data->forks[(i + 1) % data->nb_philo];
 		}
 		else
 		{
-			data->philos[i].first_fork = &data->forks[i +1 % data->nb_philo];
+			data->philos[i].first_fork = &data->forks[(i + 1) % data->nb_philo];
 			data->philos[i].second_fork = &data->forks[i];
 		}
 	}

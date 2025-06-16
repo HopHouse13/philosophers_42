@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:29:46 by pab               #+#    #+#             */
-/*   Updated: 2025/06/16 14:09:29 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/16 17:49:51 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,30 @@
 void	*ft_routine(void *arg)
 {
 	t_philo	*philo;
-
+	t_data	*data;
+	
 	philo = (t_philo *)arg;
-	while (ft_get_bool(&philo->data->start_lock, &philo->data->start) == false)
+	data = philo->data;
+	while (ft_get_bool(&data->start_lock, &data->start) == false) // en attente que tout les threads soient init
 		;
 	//kikikiaparle(philo);
-	ft_set_long(&philo->data->time_lock, &philo->last_meal, ft_get_time());
+	ft_set_long(&data->time_lock, &philo->last_meal, ft_get_time());
 	if (philo->id % 2)
-		ft_precise_sleep(philo->data->nb_philo, 60);
-	while (ft_get_bool(&philo->data->end_lock, &philo->data->end) == false)
+		ft_precise_sleep(data->nb_philo, 60);
+	while (ft_get_bool(&data->end_lock, &data->end) == false)
 	{
-		
+		pthread_mutex_lock(philo->first_fork);	
+		pthread_mutex_lock(philo->second_fork);
+		printf("%ld\tphilo %d est entrain de manger\n", (ft_get_time() - data->time/* ft_get_long(&data->time_lock, &data->time) */), philo->id);
+		philo->last_meal = ft_get_time() - data->time/* ft_get_long(&data->time_lock, &data->time) */;
+		philo->nb_meals++;
+		ft_precise_sleep(data->nb_philo, 500);
+		pthread_mutex_unlock(philo->first_fork);
+		pthread_mutex_unlock(philo->second_fork);
+		printf("%ld\tphilo %d est entrain de dormir\n", (ft_get_time() - data->time/* ft_get_long(&data->time_lock, &data->time) */), philo->id);
+		ft_precise_sleep(data->nb_philo, data->tt_sleep);
+		printf("%ld\tphilo %d est entrain de penser\n", (ft_get_time() - data->time/* ft_get_long(&data->time_lock, &data->time) */), philo->id);
+
 	}
 	return (NULL);
 }

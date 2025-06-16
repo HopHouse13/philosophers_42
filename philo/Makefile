@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pab <pab@student.42.fr>                    +#+  +:+       +#+         #
+#    By: pbret <pbret@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 17:10:30 by pbret             #+#    #+#              #
-#    Updated: 2025/06/15 18:55:59 by pab              ###   ########.fr        #
+#    Updated: 2025/06/16 18:10:41 by pbret            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,17 @@ SRCS		= srcs/philo.c \
 				srcs/utilities.c
 
 OBJS		= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
-CC			= cc
+CC			= cc #-fsanitize=thread #NE PAS UTILISER AVEC VALGRIND
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror -pthread -ggdb -I$(SRCS_DIR)
+
 
 $(OBJ_DIR)/%.o : $(SRCS_DIR)/%.c
 			@mkdir -p $(@D)
 			@$(CC) -g $(CFLAGS) -c $< -o $@
 			
 all:		$(NAME)
-			
+
 $(NAME):	$(OBJS)
 			@$(CC) $(OBJS) -o $(NAME) -lreadline -g 
 			@echo "\033[32m""Compilation de $(NAME) est terminée!""\033[0m"

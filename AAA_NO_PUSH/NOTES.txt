@@ -3,8 +3,8 @@ NOTES
 nombre_de_philosophes	temps_pour_mourir	temps_pour_manger	temps_pour_dormir	[nombre_de_repas]
 nb_philo				tt_die				tt_eat				tt_sleep				nb_meal
 
-
-
+format d'affichage : 	"X a pris une fourchette", "X mange", "X dort", "X pense", "X est mort"
+						"Timestamp_in_ms X has taken a fork"
 Questions paul:
 
 Pourquoi le nb de philo et le nb de repas est en INT;

@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:57:07 by pab               #+#    #+#             */
-/*   Updated: 2025/06/16 13:55:18 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/16 17:06:06 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ long		ft_get_time(void)
 		return (printf("erreur de la fonction gettimeofday()\n"));
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
-
+	
 long	ft_atoi(const char *str)
 {
 	int		i;
