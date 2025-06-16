@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:07:51 by pab               #+#    #+#             */
-/*   Updated: 2025/06/15 19:46:40 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/16 13:57:13 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef	struct s_philo
 
 typedef struct s_data
 {	
-	long			test_kikikiaparle;
-	pthread_mutex_t test_lock;
+	// long			test_kikikiaparle;
+	// pthread_mutex_t test_lock;
 
 	int				nb_philo;
 	int				must_eat;

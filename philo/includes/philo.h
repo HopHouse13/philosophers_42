@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pab <pab@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:10:14 by pab               #+#    #+#             */
-/*   Updated: 2025/06/15 19:34:38 by pab              ###   ########.fr       */
+/*   Updated: 2025/06/16 13:56:01 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define MINISHELL_H
 
 /// STD_HEADERS ///
-# include <stdio.h>             // printf
-# include <stdbool.h>           	// boolien
+# include <stdio.h>					// printf
+# include <stdbool.h>				// boolien
 # include <limits.h>
 # include <pthread.h>
-# include <stdlib.h>            // exit ; getenv ; malloc ;
+# include <stdlib.h>				// exit ; getenv ; malloc ;
 # include <unistd.h>				// usleep
-// # include <errno.h>             // liste des erreurs errno.
+#include <sys/time.h>				// gestion du temps
+// # include <errno.h>				// liste des erreurs errno.
 // # include <readline/history.h>  // gere l'historique des commandes (non vide)
 // # include <readline/readline.h> // declare la fonction readline.
 // # include <sys/errno.h>         // meilleur portabilite avec cette librairie.
@@ -63,6 +64,8 @@ bool	ft_simulation(t_data *data);
 void	ft_free(t_data *data);
 
 /// UTILITIES ///
+void	ft_precise_sleep(int nb_philo, long	waiting_time);
+long	ft_get_time(void);
 long	ft_atoi(const char *str);
 
 #endif
