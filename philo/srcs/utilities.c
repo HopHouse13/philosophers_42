@@ -6,11 +6,23 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:57:07 by pab               #+#    #+#             */
-/*   Updated: 2025/06/16 17:06:06 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/17 22:24:36 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+long		ft_upt(long last_time)
+{
+	return (ft_get_time() - last_time);
+}
+
+void	ft_safe_write(t_philo *philo, pthread_mutex_t *write_lock, char *str)
+{
+	pthread_mutex_lock(write_lock);
+	printf("%ld %d %s\n", ft_upt(philo->data->time), philo->id, str);
+	pthread_mutex_unlock(write_lock);
+}
 
 // Fonction pour faire un usleep precis.
 // Elle se base sur ft_get_time qui se base sur gettimeofday qui est fiable.
@@ -27,7 +39,7 @@
 // test a 50 -> (50 - 40)10 < 15 ? oui
 // test a 55 -> (55 - 40)15 < 15 ? non
 // sortie de la boucle
-void	ft_precise_sleep(int nb_philo, long	waiting_time)
+void	ft_precise_waiting(int nb_philo, long	waiting_time)
 {
 	long	start_time;
 	int		delay;
@@ -41,7 +53,7 @@ void	ft_precise_sleep(int nb_philo, long	waiting_time)
 	else
 		delay = 1000;
 	start_time = ft_get_time();
-	while ((ft_get_time() - start_time) < waiting_time)
+	while (ft_upt(start_time) < waiting_time)
 		usleep(delay);
 }
 
@@ -50,7 +62,7 @@ void	ft_precise_sleep(int nb_philo, long	waiting_time)
 // le 1er janvier 1970. (tout le monde se cale sur ce timing)
 // ON veut foncitonner en milliseconde, il faut donc convertir le retour en ms
 // Pour les sec *1000 -> ms et les microsec /1000 -> ms et on additionne tout.
-long		ft_get_time(void)
+long	ft_get_time(void)
 {
 	struct timeval	time;
 	

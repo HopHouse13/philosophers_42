@@ -6,7 +6,7 @@
 #    By: pbret <pbret@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 17:10:30 by pbret             #+#    #+#              #
-#    Updated: 2025/06/16 18:10:41 by pbret            ###   ########.fr        #
+#    Updated: 2025/06/17 21:38:58 by pbret            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS		= srcs/philo.c \
 				srcs/initialisations.c \
 				srcs/sync_values.c \
 				srcs/simulation.c \
+				srcs/free.c \
 				srcs/utilities.c
 
 OBJS		= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
