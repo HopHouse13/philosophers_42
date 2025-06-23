@@ -6,11 +6,11 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:32:49 by pab               #+#    #+#             */
-/*   Updated: 2025/06/16 18:02:11 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/23 19:22:00 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../includes/philo.h"
+#include "../includes/philo.h"
 
 void	ft_init_philo(t_data *data)
 {
@@ -26,16 +26,16 @@ void	ft_init_philo(t_data *data)
 		if (data->philos[i].id % 2)
 		{
 			data->philos[i].first_fork = &data->forks[i];
-			data->philos[i].second_fork = &data->forks[(i + 1) % data->nb_philo];
+			data->philos[i].second_fork = &data->forks[(i +1) % data->nb_philo];
 		}
 		else
 		{
-			data->philos[i].first_fork = &data->forks[(i + 1) % data->nb_philo];
+			data->philos[i].first_fork = &data->forks[(i +1) % data->nb_philo];
 			data->philos[i].second_fork = &data->forks[i];
 		}
 	}
 }
- 
+
 bool	ft_init_mutex(t_data *data)
 {
 	int	i;
@@ -47,18 +47,20 @@ bool	ft_init_mutex(t_data *data)
 			return (false);
 	}
 	if (pthread_mutex_init(&data->write_lock, NULL) != 0)
-		return	(false);
+		return (false);
 	if (pthread_mutex_init(&data->eat_lock, NULL) != 0)
-		return	(false);
+		return (false);
 	if (pthread_mutex_init(&data->start_lock, NULL) != 0)
-		return	(false);
+		return (false);
 	if (pthread_mutex_init(&data->end_lock, NULL) != 0)
-		return	(false);
+		return (false);
 	if (pthread_mutex_init(&data->time_lock, NULL) != 0)
-		return	(false);
+		return (false);
+	if (pthread_mutex_init(&data->must_eat_lock, NULL) != 0)
+		return (false);
 	return (true);
 }
- 
+
 bool	ft_init_tabs(t_data *data)
 {
 	data->philos = malloc(sizeof(t_philo) * data->nb_philo);
@@ -80,10 +82,10 @@ void	ft_init_data(t_data *data, char **argv)
 {
 	data->nb_philo = ft_atoi(argv[1]);
 	data->tt_die = ft_atoi(argv[2]);
-	data->tt_eat = ft_atoi(argv[2]);
+	data->tt_eat = ft_atoi(argv[3]);
 	data->tt_sleep = ft_atoi(argv[4]);
 	if (argv[5])
-		data->must_eat =ft_atoi(argv[5]);
+		data->must_eat = ft_atoi(argv[5]);
 	else
 		data->must_eat = -1;
 	data->time = 0;

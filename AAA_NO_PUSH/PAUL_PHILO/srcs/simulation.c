@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:26:27 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/16 11:58:36 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/23 12:28:09 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	 monitor(t_data *data)
 			set_bool(&data->end_lock, &data->end, true);
 			break ;
 		}
-		//Les deux conditions de fin de simulation on ete checkees (philo mort OU tous les philo ont mange X fois), aucune des deux n'est atteintes, on continue donc la boucle jusqu'a qu'une des deux soit atteinte
+		//Les deux conditions de fin de simulation on ete checkees (philo 	mort OU tous les philo ont mange X fois), aucune des deux n'est atteintes, on continue donc la boucle jusqu'a qu'une des deux soit atteinte
 	}
 }
 

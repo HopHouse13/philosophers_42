@@ -1,4 +1,5 @@
 NOTES
+
 1						2					3					4					5
 nombre_de_philosophes	temps_pour_mourir	temps_pour_manger	temps_pour_dormir	[nombre_de_repas]
 nb_philo				tt_die				tt_eat				tt_sleep				nb_meal
@@ -16,8 +17,6 @@ Chaque pointeur "mutex" pointe vers une struct qui gere le lock\unlock de cette 
 A quoi serre la variable "must_eat_lock" (mutex) dans data?
 et a quoi serre "must_eat_n" dans chaque thread?
 ---
-Pourquoi mettre ¨static" devant le type sur le prototype de tes fonctions.
----
 J'ai pas compris le comment est fait le lien entre le mutex et la value qui manipule.	
 exemple : start_lock (mutex) et data->start (value)
 je comprends pas comment il fait le lien.
@@ -25,3 +24,11 @@ je comprends pas comment il fait le lien.
 Si gettimeofday renvoit -1, que fait le programme?
 (impression d'un message d'erreur mais la simulation conitnue avec un time non init.)
 ---
+
+Dois mourir 
+./philo 3 300 100 100
+
+./philo 5 100 60 60
+
+
+hellgrind (datarace) : --tool=hellgrind

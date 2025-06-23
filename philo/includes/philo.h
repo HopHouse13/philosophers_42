@@ -6,12 +6,12 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:10:14 by pab               #+#    #+#             */
-/*   Updated: 2025/06/17 18:51:15 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/23 19:19:01 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef PHILO_H
+# define PHILO_H
 
 /// STD_HEADERS ///
 # include <stdio.h>					// printf
@@ -56,6 +56,8 @@ void	ft_set_bool(pthread_mutex_t	*lock, bool	*value, bool update);
 bool	ft_get_bool(pthread_mutex_t *lock, bool *value);
 void	ft_set_long(pthread_mutex_t	*lock, long	*value, long update);
 long	ft_get_long(pthread_mutex_t *lock, long *value);
+void	ft_set_int(pthread_mutex_t	*lock, int	*value, int update);
+int		ft_get_int(pthread_mutex_t *lock, int *value);
 
 /// SIMULATION ///
 bool	ft_simulation(t_data *data);
@@ -64,9 +66,9 @@ bool	ft_simulation(t_data *data);
 void	ft_free(t_data *data);
 
 /// UTILITIES ///
-long	ft_upt(long last_time);
+long	ft_currentt(t_data *data);
 void	ft_safe_write(t_philo *philo, pthread_mutex_t *write_lock, char *str);
-void	ft_precise_waiting(int nb_philo, long waiting_time);
+void	ft_precise_waiting(t_data *data, long waiting_time);
 long	ft_get_time(void);
 long	ft_atoi(const char *str);
 

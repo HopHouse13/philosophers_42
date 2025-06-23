@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 17:12:39 by pbret             #+#    #+#             */
-/*   Updated: 2025/06/17 21:11:08 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/23 11:18:42 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 
 	if (ft_parsing(argc, argv))
 		return (1);
@@ -25,4 +25,4 @@ int	main(int argc, char **argv)
 	ft_free(&data);
 	printf(GREEN"FIN_DE_SIMULATION\n"RESET);
 	return (0);
-}	
+}

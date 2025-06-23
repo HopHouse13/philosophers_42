@@ -6,7 +6,7 @@
 #    By: pbret <pbret@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/05 17:10:30 by pbret             #+#    #+#              #
-#    Updated: 2025/06/17 21:38:58 by pbret            ###   ########.fr        #
+#    Updated: 2025/06/23 10:49:03 by pbret            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ OBJS		= $(SRCS:$(SRCS_DIR)/%.c=$(OBJ_DIR)/%.o)
 CC			= cc #-fsanitize=thread #NE PAS UTILISER AVEC VALGRIND
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror -pthread -ggdb -I$(SRCS_DIR)
-
 
 $(OBJ_DIR)/%.o : $(SRCS_DIR)/%.c
 			@mkdir -p $(@D)
