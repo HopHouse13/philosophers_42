@@ -6,27 +6,34 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:57:07 by pab               #+#    #+#             */
-/*   Updated: 2025/06/23 18:36:36 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/24 20:49:18 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-long	ft_currentt(t_data *data)
+void	*ft_only_one(t_philo *philo)
 {
-	return (ft_get_time() - data->time);
+	pthread_mutex_lock(philo->first_fork);
+	ft_safe_write(philo, &philo->data->write_lock, "has taken a fork");
+	pthread_mutex_unlock(philo->first_fork);
+	return (NULL);
 }
 
+// get_time() -> marquer temps depuis le 1er janvier 1970
+// philo->data->time -> marqueur temps du debut de la simulation
+// donc (marquer temps dpeuis le debut (1970)) - (marqueur temps debut simu.)
+// = temps depuis la simulation a commencee.
 void	ft_safe_write(t_philo *philo, pthread_mutex_t *write_lock, char *str)
 {
 	pthread_mutex_lock(write_lock);
-	if (/* ft_get_bool(&philo->data->end_lock, &philo->data->end) */ philo->data->end == false)
-		printf("%ld %d %s\n", ft_currentt(philo->data), philo->id, str);
+	if (philo->data->end == false)
+		printf("%ld %d %s\n", (get_time() - philo->data->time), philo->id, str);
 	pthread_mutex_unlock(write_lock);
 }
 
 // Fonction pour faire un usleep precis.
-// Elle se base sur ft_get_time qui se base sur gettimeofday qui est fiable.
+// Elle se base sur get_time qui se base sur gettimeofday qui est fiable.
 // Principe : une boucle qui tourne et teste sa condition de sortie a une
 // frequence determinee en fonction du nombre de philo pour alleger le CPU.
 // (resume: frequence de check en fonction du nb_philo; plus il y en a, plus la
@@ -42,21 +49,21 @@ void	ft_safe_write(t_philo *philo, pthread_mutex_t *write_lock, char *str)
 // test a 50 -> (50 - 40)10 < 15 ? oui
 // test a 55 -> (55 - 40)15 < 15 ? non
 // sortie de la boucle
+// ps: usleep prend des microsecondes
+// alors que nous voulons attendre des millisecondes(ms)
 void	ft_precise_waiting(t_data *data, long waiting_time)
-{
+{(void)data;
 	int		delay;
 	long	start_time;
-	
-	if (data->nb_philo < 4)
-		delay = 50;
-	else if (data->nb_philo < 6)
-		delay = 100;
-	else if (data->nb_philo < 200)
+
+	if (waiting_time > 100)
 		delay = 500;
+	else if (waiting_time > 10)
+		delay = 100;
 	else
-		delay = 1000;
-	start_time = ft_get_time();
-	while ((ft_get_time() - start_time) < waiting_time)
+		delay = 60;
+	start_time = get_time();
+	while ((get_time() - start_time) < waiting_time)	
 		usleep(delay);
 }
 
@@ -65,7 +72,7 @@ void	ft_precise_waiting(t_data *data, long waiting_time)
 // le 1er janvier 1970. (tout le monde se cale sur ce timing)
 // ON veut foncitonner en milliseconde, il faut donc convertir le retour en ms
 // Pour les sec *1000 -> ms et les microsec /1000 -> ms et on additionne tout.
-long	ft_get_time(void)
+long	get_time(void)
 {
 	struct timeval	time;
 

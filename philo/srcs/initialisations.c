@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:32:49 by pab               #+#    #+#             */
-/*   Updated: 2025/06/23 19:22:00 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/24 17:26:22 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void	ft_init_philo(t_data *data)
 	while (++i < data->nb_philo)
 	{
 		data->philos[i].id = i +1;
-		data->philos[i].nb_meals = data->must_eat;
+		data->philos[i].nb_meals = 0;
 		data->philos[i].last_meal = 0;
 		data->philos[i].data = data;
+		data->philos[i].ifinished = false;
 		if (data->philos[i].id % 2)
 		{
 			data->philos[i].first_fork = &data->forks[i];
@@ -84,6 +85,7 @@ void	ft_init_data(t_data *data, char **argv)
 	data->tt_die = ft_atoi(argv[2]);
 	data->tt_eat = ft_atoi(argv[3]);
 	data->tt_sleep = ft_atoi(argv[4]);
+	data->tt_think = ((data->tt_die - data->tt_eat - data->tt_sleep) / 2);
 	if (argv[5])
 		data->must_eat = ft_atoi(argv[5]);
 	else

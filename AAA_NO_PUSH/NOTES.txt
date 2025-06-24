@@ -25,7 +25,7 @@ Si gettimeofday renvoit -1, que fait le programme?
 (impression d'un message d'erreur mais la simulation conitnue avec un time non init.)
 ---
 
-Dois mourir 
+Doient mourir 
 ./philo 3 300 100 100
 
 ./philo 5 100 60 60

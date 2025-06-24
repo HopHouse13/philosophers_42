@@ -53,3 +53,52 @@ Les règles spécifiques pour la partie obligatoire sont :
 - Chaque philosophe doit être représenté comme un thread séparé.
 - Il y a une fourchette entre chaque paire de philosophes. Par conséquent, s'il y a plusieurs philosophes, chaque philosophe a une fourchette à sa gauche et une fourchette à sa droite. S'il n'y a qu'un seul philosophe, il n'aura accès qu'à une seule fourchette.
 - Pour empêcher les philosophes de dupliquer les fourchettes, vous devez protéger l'état de chaque fourchette avec un mutex.
+
+
+
+
+
+2eme version
+
+
+
+
+
+Vous devez écrire un programme pour la partie obligatoire et un autre pour la partie bonus
+(si vous décidez de faire la partie bonus). Ils doivent tous deux respecter les règles suivantes :
+• Les variables globales sont interdites !
+• Votre ou vos programmes doivent prendre les arguments suivants :
+number_of_philosophers time_to_die time_to_eat time_to_sleep
+[number_of_times_each_philosopher_must_eat]
+◦ number_of_philosophers : Le nombre de philosophes, et aussi le nombre
+  de fourchettes.
+◦ time_to_die (en millisecondes) : Si un philosophe n’a pas commencé à manger dans
+  les time_to_die millisecondes depuis le début de son dernier repas ou depuis le début
+  de la simulation, il meurt.
+◦ time_to_eat (en millisecondes) : Le temps qu’un philosophe met à manger.
+  Pendant ce temps, il doit tenir deux fourchettes.
+◦ time_to_sleep (en millisecondes) : Le temps qu’un philosophe passe à dormir.
+◦ number_of_times_each_philosopher_must_eat (argument optionnel) : Si tous
+  les philosophes ont mangé au moins number_of_times_each_philosopher_must_eat
+  fois, la simulation s’arrête. Si cet argument n’est pas spécifié, la simulation
+  s’arrête lorsqu’un philosophe meurt.
+• Chaque philosophe a un numéro allant de 1 à number_of_philosophers.
+• Le philosophe numéro 1 est assis à côté du philosophe numéro number_of_philosophers.
+  Tout autre philosophe, numéroté N, est assis entre le philosophe N - 1 et le philosophe
+  N + 1.
+6
+Philosophers Je n’aurais jamais cru que la philosophie pouvait être si mortelle
+À propos des logs de votre programme :
+• Tout changement d’état d’un philosophe doit être formaté comme suit :
+◦ timestamp_in_ms X has taken a fork
+◦ timestamp_in_ms X is eating
+◦ timestamp_in_ms X is sleeping
+◦ timestamp_in_ms X is thinking
+◦ timestamp_in_ms X died
+Remplacez timestamp_in_ms par l’horodatage actuel en millisecondes
+et X par le numéro du philosophe.
+• Un message d’état affiché ne doit pas se superposer à un autre message.
+• Un message annonçant la mort d’un philosophe doit être affiché dans les 10 ms
+  suivant sa mort effective.
+• Encore une fois, les philosophes doivent éviter de mourir !
+

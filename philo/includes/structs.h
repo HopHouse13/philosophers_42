@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 18:07:51 by pab               #+#    #+#             */
-/*   Updated: 2025/06/23 19:21:04 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/24 16:04:08 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_philo
 	int				id;
 	int				nb_meals;
 	long			last_meal;
+	bool			ifinished;
 	pthread_t		thread;
 	pthread_mutex_t	*first_fork;
 	pthread_mutex_t	*second_fork;
@@ -33,6 +34,7 @@ typedef struct s_data
 	long			tt_die;
 	long			tt_eat;
 	long			tt_sleep;
+	long			tt_think;
 	long			time;
 	bool			start;
 	bool			end;
