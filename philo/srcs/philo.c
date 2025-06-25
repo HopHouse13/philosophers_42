@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 17:12:39 by pbret             #+#    #+#             */
-/*   Updated: 2025/06/24 18:04:19 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/25 13:24:48 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int	main(int argc, char **argv)
 	if (ft_simulation(&data))
 		return (3);
 	ft_free(&data);
-	printf(GREEN"FIN_DE_SIMULATION\n"RESET);
 	return (0);
 }

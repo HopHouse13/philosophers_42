@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:57:07 by pab               #+#    #+#             */
-/*   Updated: 2025/06/24 20:49:18 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/25 20:32:12 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,18 @@ void	ft_safe_write(t_philo *philo, pthread_mutex_t *write_lock, char *str)
 // ps: usleep prend des microsecondes
 // alors que nous voulons attendre des millisecondes(ms)
 void	ft_precise_waiting(t_data *data, long waiting_time)
-{(void)data;
+{
 	int		delay;
 	long	start_time;
 
-	if (waiting_time > 100)
+	if (data->nb_philo > 100)
 		delay = 500;
-	else if (waiting_time > 10)
-		delay = 100;
+	else if (data->nb_philo > 10)
+		delay = 250;
 	else
-		delay = 60;
+		delay = 100;
 	start_time = get_time();
-	while ((get_time() - start_time) < waiting_time)	
+	while ((get_time() - start_time) < waiting_time)
 		usleep(delay);
 }
 

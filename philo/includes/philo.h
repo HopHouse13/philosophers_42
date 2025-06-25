@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:10:14 by pab               #+#    #+#             */
-/*   Updated: 2025/06/24 20:51:28 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/25 20:40:20 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,9 @@
 # include <stdbool.h>				// boolien
 # include <limits.h>
 # include <pthread.h>
-# include <stdlib.h>				// exit ; getenv ; malloc ;
+# include <stdlib.h>				// exit ; getenv ; malloc
 # include <unistd.h>				// usleep
-#include <sys/time.h>				// gestion du temps
-// # include <errno.h>				// liste des erreurs errno.
-// # include <readline/history.h>  // gere l'historique des commandes (non vide)
-// # include <readline/readline.h> // declare la fonction readline.
-// # include <sys/errno.h>         // meilleur portabilite avec cette librairie.
-// # include <sys/types.h>
-// # include <sys/wait.h>
-// # include <string.h>
-// # include <fcntl.h>				// open
+# include <sys/time.h>				// gestion du temps
 
 /// HEADERS ///
 # include "./structs.h"

@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:32:49 by pab               #+#    #+#             */
-/*   Updated: 2025/06/24 17:26:22 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/25 17:13:55 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ bool	ft_init_mutex(t_data *data)
 			return (false);
 	}
 	if (pthread_mutex_init(&data->write_lock, NULL) != 0)
-		return (false);
-	if (pthread_mutex_init(&data->eat_lock, NULL) != 0)
 		return (false);
 	if (pthread_mutex_init(&data->start_lock, NULL) != 0)
 		return (false);
@@ -99,9 +97,9 @@ bool	ft_initialisation(t_data *data, char **argv)
 {
 	ft_init_data(data, argv);
 	if (!ft_init_tabs(data))
-		return (printf("Erreur d'allocation memoire"));
+		return (printf("Memory allocation error\n"));
 	if (!ft_init_mutex(data))
-		return (printf("Erreur lors de l'initilialisation d'un mutex"));
+		return (printf("Error during mutex initialization\n"));
 	ft_init_philo(data);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 21:11:34 by pbret             #+#    #+#             */
-/*   Updated: 2025/06/17 21:40:56 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/25 17:22:05 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_free(t_data *data)
 			pthread_mutex_destroy(&data->forks[i]);
 	}
 	pthread_mutex_destroy(&data->write_lock);
-	pthread_mutex_destroy(&data->eat_lock);
 	pthread_mutex_destroy(&data->start_lock);
 	pthread_mutex_destroy(&data->end_lock);
 	pthread_mutex_destroy(&data->time_lock);
