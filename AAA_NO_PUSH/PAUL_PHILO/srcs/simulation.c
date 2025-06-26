@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:26:27 by phautena          #+#    #+#             */
-/*   Updated: 2025/06/23 12:28:09 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/26 18:57:53 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ static void	*philo_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	data = philo->data;
-	while (get_bool(&data->start_lock, &data->start) == false) //Tant que la variable start n'est pas mise a true (dans la fonction parent de celle ci), on attend (que tous les threads soient crees)
-		;
+	// while (get_bool(&data->start_lock, &data->start) == false) //Tant que la variable start n'est pas mise a true (dans la fonction parent de celle ci), on attend (que tous les threads soient crees)
+	// 	;
 	set_long(&data->time_lock, &philo->last_meal, get_time()); //top depard //La simulation a demarre, on donne aux philos l'horaire de debut de simulation
 	if (data->nb_philo == 1)
 	{
@@ -117,14 +117,14 @@ int	start_simulation(t_data *data)
 	int	i;
 
 	i = -1;
+	set_long(&data->time_lock, &data->start_time, get_time()); //Apres la creation de tous les threads, on utilise la fonction get_time pour attribuer a la variable start_time de ma structure data l'horaire de demarrage de la simulation
 	while (++i < data->nb_philo) //On loop a travers notre tableau de philos pour lancer les threads, et on leur donne leur fonction de routine (ils l'executeront en boucle tant qu'on ne join pas les threads)
 	{
 		if (pthread_create(&data->philos[i].thread, NULL,
 				philo_routine, &data->philos[i]) != 0)
 			return (printf("Error while creating a thread\n"));
 	}
-	set_long(&data->time_lock, &data->start_time, get_time()); //Apres la creation de tous les threads, on utilise la fonction get_time pour attribuer a la variable start_time de ma structure data l'horaire de demarrage de la simulation
-	set_bool(&data->start_lock, &data->start, true); //On peux maintenant mettre la variable start a true, afin que les fonction routine de nos philos puisse commencer la simulation (si on ne fait pas ca, le premier philo commencerait a manger, prendre des forks etc... Alors que tous les threads n'ont meme pas encore ete crees)
+	// set_bool(&data->start_lock, &data->start, true); //On peux maintenant mettre la variable start a true, afin que les fonction routine de nos philos puisse commencer la simulation (si on ne fait pas ca, le premier philo commencerait a manger, prendre des forks etc... Alors que tous les threads n'ont meme pas encore ete crees)
 	monitor(data); //Lancement de la fonction monitor, qui va loop tant que la simulation est toujours en cours. Elle est responsable de la verification des philos morts, ainsi que de la gestion de l'argument optionnel ([number_of_times_each_philosopher_must_eat])
 	i = -1;
 	while (++i < data->nb_philo) //On loop a travers notre tableau de philos pour join les threads et donc arreter leur execution

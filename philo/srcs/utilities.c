@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 15:57:07 by pab               #+#    #+#             */
-/*   Updated: 2025/06/25 20:32:12 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/26 18:55:12 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_only_one(t_philo *philo)
 void	ft_safe_write(t_philo *philo, pthread_mutex_t *write_lock, char *str)
 {
 	pthread_mutex_lock(write_lock);
-	if (philo->data->end == false)
+	if (ft_get_bool(&philo->data->end_lock, &philo->data->end) == false)
 		printf("%ld %d %s\n", (get_time() - philo->data->time), philo->id, str);
 	pthread_mutex_unlock(write_lock);
 }

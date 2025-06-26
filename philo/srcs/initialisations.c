@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:32:49 by pab               #+#    #+#             */
-/*   Updated: 2025/06/25 17:13:55 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/26 19:34:39 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,11 @@ bool	ft_init_mutex(t_data *data)
 	}
 	if (pthread_mutex_init(&data->write_lock, NULL) != 0)
 		return (false);
-	if (pthread_mutex_init(&data->start_lock, NULL) != 0)
-		return (false);
 	if (pthread_mutex_init(&data->end_lock, NULL) != 0)
 		return (false);
 	if (pthread_mutex_init(&data->time_lock, NULL) != 0)
 		return (false);
-	if (pthread_mutex_init(&data->must_eat_lock, NULL) != 0)
+	if (pthread_mutex_init(&data->meat_lock, NULL) != 0)
 		return (false);
 	return (true);
 }
@@ -90,7 +88,6 @@ void	ft_init_data(t_data *data, char **argv)
 		data->must_eat = -1;
 	data->time = 0;
 	data->end = false;
-	data->start = false;
 }
 
 bool	ft_initialisation(t_data *data, char **argv)

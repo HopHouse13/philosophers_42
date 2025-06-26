@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:29:46 by pab               #+#    #+#             */
-/*   Updated: 2025/06/25 20:38:44 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/26 19:34:05 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,31 @@ void	ft_monitor(t_data *data)
 	while (data->end == false)
 	{
 		i = -1;
+		eat_count = 0;
 		while (++i < data->nb_philo)
 		{
 			if ((get_time() - ft_get_long(&data->time_lock,
 						&data->philos[i].last_meal)) >= data->tt_die)
 			{
+				pthread_mutex_lock(&data->meat_lock);
 				ft_safe_write(&data->philos[i], &data->write_lock, "died");
 				ft_set_bool(&data->end_lock, &data->end, true);
+				pthread_mutex_unlock(&data->meat_lock);
 				break ;
 			}
+			pthread_mutex_lock(&data->meat_lock);
 			if (data->philos[i].ifinished == true)
 				eat_count++;
+			pthread_mutex_unlock(&data->meat_lock);
 		}
 		if (data->must_eat != -1 && eat_count >= data->nb_philo)
-		{	
+		{
+			pthread_mutex_lock(&data->meat_lock);
 			ft_set_bool(&data->end_lock, &data->end, true);
-			//ft_safe_write(); // afficher un message en debut et fin de simulation et message en rouge pour le philo dead
+			pthread_mutex_lock(&data->write_lock);
+			printf(GREEN "The philosophers have finished eating\n" RESET);
+			pthread_mutex_unlock(&data->write_lock);
+			pthread_mutex_unlock(&data->meat_lock);
 		}
 	}
 }
@@ -52,8 +61,6 @@ void	*ft_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	data = philo->data;
-	while (ft_get_bool(&data->start_lock, &data->start) == false)
-		;
 	ft_set_long(&data->time_lock, &philo->last_meal, get_time());
 	if (data->nb_philo == 1)
 		return (ft_only_one(philo));
@@ -76,14 +83,13 @@ bool	ft_simulation(t_data *data)
 	int	i;
 
 	i = -1;
+	ft_set_long(&data->time_lock, &data->time, get_time());
 	while (++i < data->nb_philo)
 	{
 		if (pthread_create(&data->philos[i].thread, NULL, ft_routine,
 				&data->philos[i]) != 0)
 			return (printf("Error with creating a thread\n"));
 	}
-	ft_set_long(&data->time_lock, &data->time, get_time());
-	ft_set_bool(&data->start_lock, &data->start, true);
 	ft_precise_waiting(data, 60);
 	ft_monitor(data);
 	i = -1;
