@@ -6,7 +6,7 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:10:14 by pab               #+#    #+#             */
-/*   Updated: 2025/06/25 20:40:20 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/27 16:17:01 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_free(t_data *data);
 
 /// UTILITIES ///
 void	*ft_only_one(t_philo *philo);
-void	ft_safe_write(t_philo *philo, pthread_mutex_t *write_lock, char *str);
+void	ft_safe_write(t_philo *phil, pthread_mutex_t *wlock, char *str);
 void	ft_precise_waiting(t_data *data, long waiting_time);
 long	get_time(void);
 long	ft_atoi(const char *str);

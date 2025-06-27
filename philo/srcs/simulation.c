@@ -6,17 +6,41 @@
 /*   By: pbret <pbret@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:29:46 by pab               #+#    #+#             */
-/*   Updated: 2025/06/26 19:34:05 by pbret            ###   ########.fr       */
+/*   Updated: 2025/06/27 19:35:29 by pbret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+void	ft_start_end(t_data *data, int i, char *str, bool flag)
+{
+	if (flag)
+	{
+		pthread_mutex_lock(&data->meat_lock);
+		// pthread_mutex_lock(&data->write_lock);
+		// printf(/* RED */ "%ld %d %s\n" RESET, (get_time() - data->time),
+		// 	data->philos[i].id, str);
+		// pthread_mutex_unlock(&data->write_lock);
+		ft_safe_write(&data->philos[i], &data->write_lock, "died 💀");
+		ft_set_bool(&data->end_lock, &data->end, true);
+		pthread_mutex_unlock(&data->meat_lock);
+	}
+	else
+	{
+		pthread_mutex_lock(&data->meat_lock);
+		ft_set_bool(&data->end_lock, &data->end, true);
+		pthread_mutex_lock(&data->write_lock);
+		printf(GREEN "%s\n" RESET, str);
+		pthread_mutex_unlock(&data->write_lock);
+		pthread_mutex_unlock(&data->meat_lock);
+	}
+}
+
 // Conditions:
 // ctrl c
 // si un philo meurt (time - last_meal < tt_die)
 // si tout les philo ont manger must_eat fois
-void	ft_monitor(t_data *data)
+static void	ft_monitor(t_data *data)
 {
 	int		i;
 	int		eat_count;
@@ -31,10 +55,11 @@ void	ft_monitor(t_data *data)
 			if ((get_time() - ft_get_long(&data->time_lock,
 						&data->philos[i].last_meal)) >= data->tt_die)
 			{
-				pthread_mutex_lock(&data->meat_lock);
-				ft_safe_write(&data->philos[i], &data->write_lock, "died");
-				ft_set_bool(&data->end_lock, &data->end, true);
-				pthread_mutex_unlock(&data->meat_lock);
+				ft_start_end(data, i, "died", 1);
+				// pthread_mutex_lock(&data->meat_lock);
+				// ft_safe_write(&data->philos[i], &data->write_lock, "died");
+				// ft_set_bool(&data->end_lock, &data->end, true);
+				// pthread_mutex_unlock(&data->meat_lock);
 				break ;
 			}
 			pthread_mutex_lock(&data->meat_lock);
@@ -43,13 +68,14 @@ void	ft_monitor(t_data *data)
 			pthread_mutex_unlock(&data->meat_lock);
 		}
 		if (data->must_eat != -1 && eat_count >= data->nb_philo)
-		{
-			pthread_mutex_lock(&data->meat_lock);
-			ft_set_bool(&data->end_lock, &data->end, true);
-			pthread_mutex_lock(&data->write_lock);
-			printf(GREEN "The philosophers have finished eating\n" RESET);
-			pthread_mutex_unlock(&data->write_lock);
-			pthread_mutex_unlock(&data->meat_lock);
+		{	
+			ft_start_end(data, 0, "Philosophers finished eating!🐤", 0);
+			// pthread_mutex_lock(&data->meat_lock);
+			// ft_set_bool(&data->end_lock, &data->end, true);
+			// pthread_mutex_lock(&data->write_lock);
+			// printf(GREEN "The philosophers have finished eating\n" RESET);
+			// pthread_mutex_unlock(&data->write_lock);
+			// pthread_mutex_unlock(&data->meat_lock);
 		}
 	}
 }
