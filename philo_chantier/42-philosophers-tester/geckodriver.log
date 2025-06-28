@@ -1,0 +1,28 @@
+2025/06/28 12:23:34.527802 cmd_run.go:737: WARNING: XAUTHORITY environment value is not a clean path: "/run/user/108001/.Xauthority"
+1751106215175	geckodriver	INFO	Listening on 127.0.0.1:60335
+1751106215523	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" "/snap/firefox/current/ ... te" "--remote-debugging-port" "58187" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileDV0lEg"
+Gtk-Message: 12:23:35.618: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+[523708, Main Thread] WARNING: GTK+ module /snap/firefox/6421/gnome-platform/usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so cannot be loaded.
+GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported.: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:201
+
+(firefox:523708): Gtk-WARNING **: 12:23:35.675: GTK+ module /snap/firefox/6421/gnome-platform/usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so cannot be loaded.
+GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported.
+Gtk-Message: 12:23:35.675: Failed to load module "canberra-gtk-module"
+[523708, Main Thread] WARNING: GTK+ module /snap/firefox/6421/gnome-platform/usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so cannot be loaded.
+GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported.: 'glib warning', file /build/firefox/parts/firefox/build/toolkit/xre/nsSigHandlers.cpp:201
+
+(firefox:523708): Gtk-WARNING **: 12:23:35.676: GTK+ module /snap/firefox/6421/gnome-platform/usr/lib/gtk-2.0/modules/libcanberra-gtk-module.so cannot be loaded.
+GTK+ 2.x symbols detected. Using GTK+ 2.x and GTK+ 3 in the same process is not supported.
+Gtk-Message: 12:23:35.676: Failed to load module "canberra-gtk-module"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1751106216358	Marionette	INFO	Marionette enabled
+1751106216483	Marionette	INFO	Listening on port 44289
+WebDriver BiDi listening on ws://127.0.0.1:58187
+Read port: 44289
+1751106216566	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: CustomizableUI: 
+  Could not localize property 'fxms-bmb-button.tooltiptext'.
+1751106223234	Marionette	INFO	Stopped listening on port 44289
+console.error: "Failed to fetch https://ads.mozilla.org/v1/delete_user:" "NetworkError when attempting to fetch resource."
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.

@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"structs.h": "c",
-		"philo.h": "c",
-		"font_style.h": "c",
-		"time.h": "c",
-		"unistd.h": "c"
-	}
-}
